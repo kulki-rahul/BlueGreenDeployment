@@ -9,8 +9,5 @@ node {
             )
     }
 	stage 'Kubernetes Deployment'
-    sh 'kubectl apply -f docker-compose-v1.yml'
-    sh 'kubectl get deployments'
-	stage 'Smoke Test'
-	sh 'echo Smokeeyyyy'
+    	sh 'kubectl apply -f docker-compose-v1.yml'   
 }
