@@ -10,4 +10,3 @@ node {
     }
 	stage 'Kubernetes Deployment'
     	sh 'kubectl apply -f docker-compose-v1.yml'   
-}
