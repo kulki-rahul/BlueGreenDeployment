@@ -2,11 +2,9 @@ stage 'Checkout'
 node {
    git 'https://github.com/kulki-rahul/BlueGreenDeployment.git' // Checks out example votiung app repository
      }
-   stage 'Docker Builds'
-   docker.withRegistry('https://rkulkarnidevopsdemo.azurecr.io/', 'private-login') {
-        parallel(
-            "Build Website":{def myEnv = docker.build('rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v1').push('latest')},
-            )
-    }
-	stage 'Kubernetes Deployment'
-    	sh 'kubectl apply -f docker-compose-v1.yml'   
+  stage 'Build'
+  {
+		bat 'nuget restore BlueGreenDeploymentDemo.sln'
+		bat "\"${tool 'MSBuild'}\" BlueGreenDeploymentDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+}
+	
