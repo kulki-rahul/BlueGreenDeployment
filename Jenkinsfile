@@ -5,6 +5,6 @@ node {
   stage 'Build'
   node {
 		bat 'nuget restore BlueGreenDeploymentDemo.sln'
-		bat "\"${tool 'MSBuild'}\" BlueGreenDeploymentDemo.sln /p:Configuration=Release /p:Platform=\"Any CPU\" /p:ProductVersion=1.0.0.${env.BUILD_NUMBER}"
+		bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/msbuild.exe" BlueGreenDeployment/BlueGreenDeploymentDemo.csproj'
 	   }
 	

@@ -249,4 +249,16 @@
   </Target>
   <Target Name="AfterBuild">
   </Target> -->
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(ProjectDir)bin\*.*"  "$(ProjectDir)obj\docker\publish\bin\*.*"
+xcopy "$(ProjectDir)content\*.*"  "$(ProjectDir)obj\docker\publish\content\*.*"
+xcopy "$(ProjectDir)fonts\*.*"  "$(ProjectDir)obj\docker\publish\fonts\*.*"
+xcopy "$(ProjectDir)Scripts\*.*"  "$(ProjectDir)obj\docker\publish\Scripts\*.*"
+xcopy "$(ProjectDir)Views\*.*"  "$(ProjectDir)obj\docker\publish\Views\*.*"
+xcopy "$(ProjectDir)ApplicationInsights.config"  "$(ProjectDir)obj\docker\publish\"
+xcopy "$(ProjectDir)favicon.ico"  "$(ProjectDir)obj\docker\publish\"
+xcopy "$(ProjectDir)Global.asax"  "$(ProjectDir)obj\docker\publish\"
+xcopy "$(ProjectDir)Web.config"  "$(ProjectDir)obj\docker\publish\"
+xcopy "$(ProjectDir)packages.config"  "$(ProjectDir)obj\docker\publish\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>
