@@ -5,6 +5,6 @@ node {
   stage 'Build'
   node {
 		bat 'nuget restore BlueGreenDeploymentDemo.sln'
-		bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/msbuild.exe" BlueGreenDeployment/BlueGreenDeploymentDemo.csproj'
+		bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/msbuild.exe" "C:/Program Files (x86)/Jenkins/workspace/bluegreen/BlueGreenDeployment/BlueGreenDeploymentDemo.csproj" '
 	   }
 	
