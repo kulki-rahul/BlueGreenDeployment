@@ -4,6 +4,6 @@ node {
      }
   stage 'Deploy'
   node {
-	  bat 'powershell kubectl get pods'
+	  bat 'powershell "kubectl get pods" '
   }
 	
