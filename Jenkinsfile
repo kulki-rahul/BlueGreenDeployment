@@ -15,6 +15,6 @@ node {
 	   }
 stage 'Deploy'
   node {
-	  bat 'powershell kubectl apply -f docker-compose-v1.yml'
+	  bat 'powershell kubectl get pods'
   }
 	
