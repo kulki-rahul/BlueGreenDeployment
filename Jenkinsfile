@@ -11,4 +11,6 @@ node {
 {
 	bat powershell 'docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml" -f "docker-compose.vs.release.yml" -p dockercompose2317300679 build --no-cache'
 }
+}
+
 	
