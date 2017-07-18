@@ -16,12 +16,12 @@ spec:
         imagePullPolicy: Always
         readinessProbe:
           tcpSocket:
-            port: 8085
+            port: 80
           initialDelaySeconds: 20
           timeoutSeconds: 5
         ports:
         - name: web
-          containerPort: 8085       
+          containerPort: 80       
       imagePullSecrets:
         - name: myregistrykey
 
