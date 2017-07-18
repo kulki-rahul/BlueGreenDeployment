@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
       - name: bluegreendeploymentdemov2
-        image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v2
+        image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v3
         imagePullPolicy: Always
         readinessProbe:
           tcpSocket:
