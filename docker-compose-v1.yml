@@ -1,27 +1,27 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: bluegreendeploymentdemo
+  name: bluegreendeploymentdemov1
 spec:
   replicas: 1
   template:
     metadata:
       name: 
       labels:
-        app: bluegreendeploymentdemo
+        app: bluegreendeploymentdemov1
     spec:
       containers:
-      - name: webapplication3
-        image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v1
+      - name: bluegreendeploymentdemov1
+        image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v2
         imagePullPolicy: Always
         readinessProbe:
           tcpSocket:
-            port: 80
+            port: 8080
           initialDelaySeconds: 20
           timeoutSeconds: 5
         ports:
         - name: web
-          containerPort: 80       
+          containerPort: 8080       
       imagePullSecrets:
         - name: myregistrykey
 
