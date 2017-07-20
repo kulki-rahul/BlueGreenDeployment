@@ -1,18 +1,18 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: bluegreendeploymentdemov2
+  name: bluegreendeploymentdemov4
 spec:
   replicas: 1
   template:
     metadata:
       name: 
       labels:
-        app: bluegreendeploymentdemov2
+        app: bluegreendeploymentdemov4
     spec:
       containers:
-      - name: bluegreendeploymentdemov2
-        image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v3
+      - name: bluegreendeploymentdemov4
+        image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v4
         imagePullPolicy: Always
         readinessProbe:
           tcpSocket:
