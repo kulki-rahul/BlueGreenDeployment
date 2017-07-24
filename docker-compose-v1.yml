@@ -1,10 +1,17 @@
-kind: Pod
-apiVersion: v1
+kind: Deployment
+apiVersion: extensions/v1beta1
 metadata:
-  name: blue
+  name: Blue
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: 
+      labels:
+        app: Blue
     spec:
       containers:
-      - name: blue
+      - name: Blue
         image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v4
         imagePullPolicy: Always
         readinessProbe:
@@ -17,5 +24,3 @@ metadata:
           containerPort: 80       
       imagePullSecrets:
         - name: myregistrykey
-
-        
