@@ -70,7 +70,7 @@ else
     $podName = $bluePodName;
 }
 
-for($countofSvc = 1; $countofSvc -le $svcStatus.count; $countofSvc++)
+for($countofSvc = 1; $countofSvc -lt $svcStatus.count; $countofSvc++)
 {
    if($svcStatus[$countofSvc].split(' ')[0].tostring() -eq $podName)
    {
