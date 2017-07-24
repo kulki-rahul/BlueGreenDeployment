@@ -1,17 +1,17 @@
-kind: Deployment
+kind: Pod
 apiVersion: extensions/v1beta1
 metadata:
-  name: bluegreendeploymentdemov4
+  name: blue
 spec:
   replicas: 1
   template:
     metadata:
       name: 
       labels:
-        app: bluegreendeploymentdemov4
+        app: blue
     spec:
       containers:
-      - name: bluegreendeploymentdemov4
+      - name: blue
         image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v4
         imagePullPolicy: Always
         readinessProbe:
