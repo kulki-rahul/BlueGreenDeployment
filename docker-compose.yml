@@ -4,5 +4,5 @@ services:
   bluegreendeploymentdemo:
     image: bluegreendeploymentdemo
     build:
-      context: "C:\Program Files (x86)\Jenkins\workspace\bluegreendemo\BlueGreenDeploymentDemo"
+      context: "C:/Rahul/Projects/BlueGreenDeploymentDemo/BlueGreenDeployment/BlueGreenDeploymentDemo"
       dockerfile: Dockerfile
