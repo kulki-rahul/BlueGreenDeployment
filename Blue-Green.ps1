@@ -88,7 +88,7 @@ if($svcStatus.Count -gt 0)
        }
     }
 
-     if($countSvcCreation = 2)
+     if($countSvcCreation -ge 2)
        {
             break;
        }
