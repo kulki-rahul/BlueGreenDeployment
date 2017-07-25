@@ -85,6 +85,11 @@ for($countofSvc = 1; $countofSvc -lt $svcStatus.count; $countofSvc++)
    }
 }
 
+ if($countSvcCreation = 2)
+   {
+        break;
+   }
+
 }while($countSvcCreation = 1)
 
 
