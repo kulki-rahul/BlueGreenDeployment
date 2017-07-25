@@ -8,8 +8,8 @@ node {
 		bat '"C:/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin/msbuild.exe" BlueGreenDeploymentDemo.sln'
 		bat 'powershell docker-compose -f "docker-compose.yml" -f "docker-compose.override.yml" -f "docker-compose.vs.release.yml" -p dockercompose2317300679 build --no-cache'
 	  	bat 'powershell docker login --username=RkulkarnidevOpsDemo --password=+++/==qh9vT+L=baPyO/+Btnj=5WExk/ rkulkarnidevopsdemo.azurecr.io'
-	        bat 'powershell docker tag bluegreendeploymentdemo rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v5'
-	  	bat 'powershell docker push rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v5'        
+	        bat 'powershell docker tag bluegreendeploymentdemo rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v6'
+	  	bat 'powershell docker push rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v6'        
 
 	   }
 stage 'Deploy'
