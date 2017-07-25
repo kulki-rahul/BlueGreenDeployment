@@ -70,25 +70,29 @@ else
     $podName = $bluePodName;
 }
 
-for($countofSvc = 1; $countofSvc -lt $svcStatus.count; $countofSvc++)
+if($svcStatus.Count -gt 0)
 {
-   if($svcStatus[$countofSvc].split(' ')[0].tostring() -eq $podName)
-   {
-        if($svcStatus[$countofSvc].split(' ') -notcontains "<pending>")
-        {
-            $st = $svcStatus[$countofSvc].split(' ')
-            $k=$st | ? {$_}
-            az network application-gateway address-pool update --gateway-name rkulkarni -n appGatewayBackendPool -g devOpsDemo --servers $k[2].tostring()
-            $countSvcCreation = 2;
-            break;
-        }
-   }
-}
 
- if($countSvcCreation = 2)
-   {
-        break;
-   }
+    for($countofSvc = 1; $countofSvc -lt $svcStatus.count; $countofSvc++)
+    {
+       if($svcStatus[$countofSvc].split(' ')[0].tostring() -eq $podName)
+       {
+            if($svcStatus[$countofSvc].split(' ') -notcontains "<pending>")
+            {
+                $st = $svcStatus[$countofSvc].split(' ')
+                $k=$st | ? {$_}
+                az network application-gateway address-pool update --gateway-name rkulkarni -n appGatewayBackendPool -g devOpsDemo --servers $k[2].tostring()
+                $countSvcCreation = 2;
+                break;
+            }
+       }
+    }
+
+     if($countSvcCreation = 2)
+       {
+            break;
+       }
+ }
 
 }while($countSvcCreation = 1)
 
