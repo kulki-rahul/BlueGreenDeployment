@@ -251,14 +251,15 @@
   </Target> -->
   <PropertyGroup>
     <PostBuildEvent>xcopy /Y "$(ProjectDir)bin\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\bin\*.*"
-xcopy /Y "$(ProjectDir)content\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\content\*.*"
-xcopy /Y "$(ProjectDir)fonts\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\fonts\*.*"
-xcopy /Y "$(ProjectDir)Scripts\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\Scripts\*.*"
-xcopy /Y "$(ProjectDir)Views\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\Views\*.*"
+xcopy /Y /s /i "$(ProjectDir)content\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\content\*.*"
+xcopy /Y /s /i "$(ProjectDir)fonts\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\fonts\*.*"
+xcopy /Y /s /i "$(ProjectDir)Scripts\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\Scripts\*.*"
+xcopy /Y /s /i "$(ProjectDir)Views\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\Views\*.*"
 xcopy /Y "$(ProjectDir)ApplicationInsights.config"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\"
 xcopy /Y "$(ProjectDir)favicon.ico"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\"
 xcopy /Y "$(ProjectDir)Global.asax"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\"
 xcopy /Y "$(ProjectDir)Web.config"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\"
-xcopy /Y "$(ProjectDir)packages.config"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\"</PostBuildEvent>
+xcopy /Y "$(ProjectDir)packages.config"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\"
+xcopy /Y "$(ProjectDir)roslyn\*.*"  "C:\Rahul\Projects\BlueGreenDeploymentDemo\BlueGreenDeployment\BlueGreenDeploymentDemo\obj\docker\publish\bin\roslyn\*.*"</PostBuildEvent>
   </PropertyGroup>
 </Project>
