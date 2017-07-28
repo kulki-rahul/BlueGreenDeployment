@@ -1,17 +1,17 @@
 kind: Deployment
 apiVersion: extensions/v1beta1
 metadata:
-  name: green
+  name: blue
 spec:
   replicas: 1
   template:
     metadata:
       name: 
       labels:
-        app: green
+        app: blue
     spec:
       containers:
-      - name: green
+      - name: blue
         image: rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v10
         imagePullPolicy: Always
         readinessProbe:
