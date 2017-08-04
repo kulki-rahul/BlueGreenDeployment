@@ -24,7 +24,7 @@ while($countPodsCreation = 1)
 $PodList = kubectl get pods -o jsonpath="{.items[*].status.containerStatuses[*].image},{.items[*].metadata.name}"
 foreach($pod in $PodList)
 {
-  if($pod.Split(',')[0] -eq  [Environment]::GetEnvironmentVariable("FullDeploymentName","rkulkarni"))
+  if($pod.Split(',')[0] -eq  [Environment]::GetEnvironmentVariable("FullDeploymentName","User"))
   {
     $podName = $pod.Split(',')[1]
   }
@@ -52,7 +52,7 @@ if($svcStatus.Count -gt 0)
             {
                 $st = $svcStatus[$countofSvc].split(' ')
                 $k=$st | ? {$_}
-                [Environment]::SetEnvironmentVariable("DeploymentIPAddress", $k[2].tostring(), "rkulkarni")                
+                [Environment]::SetEnvironmentVariable("DeploymentIPAddress", $k[2].tostring(), "User")                
                 $countSvcCreation = 2;
                 break;
             }
