@@ -33,7 +33,9 @@ $fullDeploymentName = "rkulkarnidevopsdemo.azurecr.io/bluegreendeploymentdemo:v"
 
 powershell docker tag bluegreendeploymentdemo $fullDeploymentName
 powershell docker push $fullDeploymentName
-$env:FullDeploymentName = $fullDeploymentName
+
+[Environment]::SetEnvironmentVariable("FullDeploymentName", $fullDeploymentName, "rkulkarni")
+
 
 
 
