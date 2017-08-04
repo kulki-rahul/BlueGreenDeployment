@@ -21,36 +21,16 @@ $podSta = kubectl get pods
 }
 while($countPodsCreation = 1)
 
-$podNamesArray = kubectl get pods -o "name"
-$podNames =  $podNamesArray.split(' ')
-
-$blueGreen = 0;
-$bluePodName = ""
-$greenPodName = ""
-
-if($podNames.Count -gt 1)
+$PodList = kubectl get pods -o jsonpath="{.items[*].status.containerStatuses[*].image},{.items[*].metadata.name}"
+foreach($pod in $PodList)
 {
-    $blueGreen = 1;
+  if($pod.Split(',')[0] -eq  $env:FullDeploymentName)
+  {
+    $podName = $pod.Split(',')[1]
+  }
 }
 
-for($count=0; $count -le $podNames.Count - 1;$count++)
-{
-    $names = $podNames[$count].tostring().split('/');
-    $name = $names[1].split('-');
-    if($name -contains "blue")
-    {
-        $bluePodName = $podNames[$count].tostring().split('/')[1]
-        if($blueGreen -eq 0)
-        {
-            kubectl expose pods $bluePodName --port=80 --type=LoadBalancer
-        }
-    }
-    elseif ($name -contains "green")
-    {
-        $greenPodName = $podNames[$count].tostring().split('/')[1]
-        kubectl expose pods $greenPodName --port=80 --type=LoadBalancer
-    }
-}
+kubectl expose pods $podName --port=80 --type=LoadBalancer
 
 $countSvcCreation = 1;
 
@@ -60,15 +40,6 @@ do
 Sleep 15
 
 $svcStatus = kubectl get svc
-$podName = ""
-if($blueGreen -eq 1)
-{
-    $podName = $greenPodName;
-}
-else
-{
-    $podName = $bluePodName;
-}
 
 if($svcStatus.Count -gt 0)
 {
@@ -81,7 +52,7 @@ if($svcStatus.Count -gt 0)
             {
                 $st = $svcStatus[$countofSvc].split(' ')
                 $k=$st | ? {$_}
-                az network application-gateway address-pool update --gateway-name rkulkarni -n appGatewayBackendPool -g devOpsDemo --servers $k[2].tostring()
+		$env:DeploymentIPAddress = $k[2].tostring()                
                 $countSvcCreation = 2;
                 break;
             }
