@@ -21,14 +21,22 @@ $podSta = kubectl get pods
 }
 while($countPodsCreation = 1)
 
-$PodList = kubectl get pods -o jsonpath="{.items[*].status.containerStatuses[*].image},{.items[*].metadata.name}"
-foreach($pod in $PodList)
+$PodList = kubectl get pods -o jsonpath="{.items[*].status.containerStatuses[*].image}"
+$podIndex =0;
+foreach($pod in $PodList.Split(' '))
 {
-  if($pod.Split(',')[0] -eq  [Environment]::GetEnvironmentVariable("FullDeploymentName","User"))
+  
+  if($pod -eq  [Environment]::GetEnvironmentVariable("FullDeploymentName","User"))
   {
-    $podName = $pod.Split(',')[1]
+    $PodNameList = kubectl get pods -o jsonpath="{.items[*].metadata.name}"
+    $PodNames = $PodNameList.Split(' ')
+    $podName = $PodNames[$podIndex]
+
   }
+  $podIndex ++
 }
+
+
 
 kubectl expose pods $podName --port=80 --type=LoadBalancer
 
